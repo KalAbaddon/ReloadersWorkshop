@@ -1387,7 +1387,9 @@ namespace ReloadersWorkShop
 
 		public string GetDataPath()
 			{
-			return (String.Format(@"c:\Users\Public\{0}", Application.ProductName));
+			//return (String.Format(@"c:\Users\Public\{0}", Application.ProductName));
+
+			return System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly().Location);
 			}
 
 		//============================================================================*
