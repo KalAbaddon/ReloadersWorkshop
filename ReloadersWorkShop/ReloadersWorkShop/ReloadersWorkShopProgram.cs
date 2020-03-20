@@ -47,6 +47,13 @@ namespace ReloadersWorkShop
 			bool fDev = false;
 			string strGUID = "";
 
+			/*  
+				Project debug string setting
+				
+				/Dev /GUID=1aa3257d-fa44-4f49-9546-076b2385cd35
+
+			*/
+
 			foreach (string strArg in args)
 				{
 				if (strArg.ToUpper() == "/DEV")
@@ -60,13 +67,14 @@ namespace ReloadersWorkShop
 			// Make sure the correct GUID has been sent
 			//----------------------------------------------------------------------------*
 
+			/* Removed because not used anymore
 			if (strGUID == null || strGUID != "1aa3257d-fa44-4f49-9546-076b2385cd35")
 				{
 				MessageBox.Show(String.Format("You must use the launcher to start {0}.  You can not execute it directly.", Application.ProductName), "Execution Out of Order", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 
 				return;
 				}
-				
+			*/ 	
 			//----------------------------------------------------------------------------*
 			// See if we're already running
 			//----------------------------------------------------------------------------*

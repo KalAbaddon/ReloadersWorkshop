@@ -726,6 +726,9 @@
     <None Include="bin\Debug\Images\CartridgeDimensions.jpg" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="ReloadersWorkShop.rwd">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="Resources\Images\CaseDimensions.jpg" />
   </ItemGroup>
   <ItemGroup>
