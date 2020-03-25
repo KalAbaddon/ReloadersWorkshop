@@ -1386,11 +1386,18 @@ namespace ReloadersWorkShop
 		//============================================================================*
 
 		public string GetDataPath()
-			{
+		{
 			//return (String.Format(@"c:\Users\Public\{0}", Application.ProductName));
 
+			//return System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly().Location);
+
+			return Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "ReloadersWorkshop");
+		}
+
+		public string GetApplicationPath()
+		{
 			return System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly().Location);
-			}
+		}
 
 		//============================================================================*
 		// GetFirearmTotalCost()
@@ -1448,14 +1455,6 @@ namespace ReloadersWorkShop
 			return (null);
 			}
 
-		//============================================================================*
-		// GetSAAMIPath()
-		//============================================================================*
-
-		public string GetSAAMIPath()
-		{
-			return System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly().Location);
-		}
 
 		//============================================================================*
 		// GetSupplyList()
@@ -1994,6 +1993,21 @@ namespace ReloadersWorkShop
 			m_GearList = new cGearList();
 			m_ToolList = new cToolList();
 
+
+			//----------------------------------------------------------------------------*
+			// Check application directory exists
+			//----------------------------------------------------------------------------*
+			if(!Directory.Exists(GetDataPath()))
+			{
+				Directory.CreateDirectory(GetDataPath());
+
+				string FilePath = Path.Combine(strApplicationDataPath, strDataFileName, "ReloadersWorkShop.rwd");
+				string AppPath = Path.Combine(GetApplicationPath(), "ReloadersWorkShop.rwd");
+
+				File.Copy(AppPath, FilePath);
+
+			}
+
 			//----------------------------------------------------------------------------*
 			// Restore Backup?
 			//----------------------------------------------------------------------------*
@@ -2027,6 +2041,8 @@ namespace ReloadersWorkShop
 					strDataFileName = "ReloadersWorkShop.rwd";
 
 				strFilePath = Path.Combine(strApplicationDataPath, strDataFileName);
+
+
 				}
 
 			//----------------------------------------------------------------------------*
@@ -2700,6 +2716,11 @@ namespace ReloadersWorkShop
 
 				if (strFilePath == null)
 					strFilePath = Path.Combine(GetDataPath(), "ReloadersWorkShop.rwd");
+
+				if (!File.Exists(strFilePath))
+				{
+					File.Copy(Path.Combine(GetApplicationPath(), "ReloadersWorkShop.rwd"), strFilePath);
+				}
 
 				Stream = File.Open(strFilePath, FileMode.Create);
 

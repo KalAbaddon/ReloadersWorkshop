@@ -681,7 +681,7 @@ namespace ReloadersWorkShop
 
 			string strRemotePath = String.Format("{0}", Path.Combine(strDocPath, strFileName));
 
-			string strLocalPath = DataFiles.GetSAAMIPath();
+			string strLocalPath = DataFiles.GetDataPath();
 			string strLocalFilePath = Path.Combine(strLocalPath, strFileName);
 
 			if (cMainForm.DownloadSAAMIDoc(DataFiles, strRemotePath, strLocalFilePath))
