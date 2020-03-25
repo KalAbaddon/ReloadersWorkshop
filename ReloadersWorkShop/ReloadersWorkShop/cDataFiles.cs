@@ -1453,9 +1453,9 @@ namespace ReloadersWorkShop
 		//============================================================================*
 
 		public string GetSAAMIPath()
-			{
-			return (String.Format(@"c:\Users\Public\{0}\SAAMI", Application.ProductName));
-			}
+		{
+			return System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly().Location);
+		}
 
 		//============================================================================*
 		// GetSupplyList()

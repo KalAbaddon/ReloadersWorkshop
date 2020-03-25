@@ -1334,9 +1334,9 @@ namespace ReloadersWorkShop
 
             double dBulletDiameter = Math.Round(cDataFiles.MetricToStandard(BulletDiameterTextBox.Value, cDataFiles.eDataType.Dimension), 4);
 
-            double dMinAllowedDiameter = 1.0;
+            double dMinAllowedDiameter = 0.1;
             double dMaxAllowedDiameter = 0.0;
-            double dMinWeight = 1000.0;
+            double dMinWeight = 1.0;
             double dMaxWeight = 0.0;
 
             cFirearm.eFireArmType eFirearmType = FirearmTypeCombo.Value;
